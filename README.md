@@ -6,7 +6,7 @@
                 unit and then the unit they want to convert
                 the value to and convert the value for the user
     
-    Following are the methids called in the main() to do the conversion:
+    Following are the methods called in the main() to do the conversion:
 
                 checkValidityInt()  ->  checks whether the value entred
                                         is a number or not if not then 
