@@ -1,7 +1,5 @@
 # jav1001-lab-one
 
-    STUDENT NAME: Goonjs Gandhi 
-    STUDENT ID: A00277328
     LAB1 Variables And Logic
 
     main()  ->  Asks user to enter a number and then the original 
