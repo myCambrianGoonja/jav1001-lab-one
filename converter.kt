@@ -1,7 +1,7 @@
 fun main() {
     //Taking input from the user and storing it in readUnitValue
     println("Please enter a positive integer")
-    var readUnitValue: Int? = readLine()?.toIntOrNull()
+    var readUnitValue: Double? = readLine()?.toDoubleOrNull()
 
     //Checking the validity of the readUnitValue
     val valid = checkValidityInt(readUnitValue)
@@ -27,7 +27,7 @@ fun main() {
     convertingToTheConvertUnit(readOriginalUnit, readConversionUnit, readUnitValue)
 }
 
-fun checkValidityInt(value: Int?): Boolean {
+fun checkValidityInt(value: Double?): Boolean {
     if(value == null) {
         println("Please enter a valid integer")
         return false
@@ -47,7 +47,7 @@ fun checkValidString(value: String?, orUnit:String?): Boolean {
     else return true
 }
 
-fun convertingToTheConvertUnit(originalUnit: String?, conversionUnit: String?, value:Int?) {
+fun convertingToTheConvertUnit(originalUnit: String?, conversionUnit: String?, value:Double?) {
   val combineValue = "$originalUnit-$conversionUnit"
 
   when(combineValue) {
