@@ -21,4 +21,5 @@
     
         convertingToTheConvertUnit() -> checks for the original value 
                                         and the conversion unit value 
-                                        and converts accordingly.    
+                                        and converts accordingly.  
+ There are two branches the second branch uses Maps to map the values according to the formula needed also to customise the code 
