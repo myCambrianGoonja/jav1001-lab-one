@@ -50,38 +50,60 @@ fun checkValidString(value: String?, orUnit:String?): Boolean {
 fun convertingToTheConvertUnit(originalUnit: String?, conversionUnit: String?, value:Double?) {
   val combineValue = "$originalUnit-$conversionUnit"
 
-  when(combineValue) {
-    "km-mi" -> {
-        println("Conversion of $value km = ${value?.times(0.64)} mi ")
-    } "mi-km" -> {
-        println("Conversion of $value mi = ${value?.times(1.61)} km ")
-    } "cm-in" -> {
-        println("Conversion of $value cm = ${value?.times(0.39)} in ")
-    } "in-cm" -> {
-        println("Conversion of $value in = ${value?.times(2.54)} cm ")
-    } "kg-lb" -> {
-        println("Conversion of $value kg = ${value?.times(2.54)} lb")
-    } "lb-kg" -> {
-        println("Conversion of $value kg = ${value?.times(2.54)} lb")
-    } "g-oz" -> {
-        println("Conversion of $value g = ${value?.times(0.04)} oz")
-    } "oz-g" -> {
-        println("Conversion of $value oz = ${value?.times(28.35)} g")
-    } "C-F" -> {
-        println("Conversion of $value C = ${value?.times(9)?.div(5)?.plus(32)} F")
-    } "F-C" -> {
-        println("Conversion of $value F = ${value?.minus(32)?.times(5)?.div(9)} C")
-    } "C-K" -> {
-        println("Conversion of $value C = ${value?.plus(273.15)} K")
-    } "F-K" -> {
-        println("Conversion of $value F = ${value?.minus(32)?.times(5)?.div(9)?.plus(273.15)} K")
-    } "L-cups" -> {
-          println("Conversion of $value L = ${value?.times(4.17)} cups")
-    } "cups-L" -> {
-          println("Conversion of $value cups = ${value?.times(0.24)} L")
-    } else -> {
-        println("Try using short forms like in/cm/km/mi/kg etc if you did then sorry your unit is not supported")
-    }
-  }
+//Creating a map for costomising the code 
+  val multiplicationFormulaMap = mapOf(
+    "km-mi" to 0.62,
+    "mi-km" to 1.61,
+    "cm-in" to 0.39,
+    "in-cm" to 2.54,
+    "kg-lb" to 2.04,
+    "lb-kg" to 0.45,
+    "g-oz" to 0.04,
+    "oz-g" to 28.35,
+    "L-cups" to 4.17,
+    "cups-L" to 0.24,
+    "C-F" to 9,
+    "F-C" to 5,
+    "F-K" to 5,
+  )
+
+    val divMap = mapOf(
+        "C-F" to 5,
+        "F-c" to 9,
+        "F-K" to 9
+    )
+
+    val plusMap = mapOf(
+        "C-F" to 32,
+        "C-K" to 273.15,
+        "F-K" to 273.15
+    )
+
+    val minusMap = mapOf(
+        "F-C" to 32,
+        "F-K" to 32
+    )
+
+    var getMultiplicationValue: Double? = multiplicationFormulaMap[combineValue]?.toDouble()
+    var getDivValue: Double? = divMap[combineValue]?.toDouble() 
+    var getplusValue: Double? = plusMap[combineValue]?.toDouble()
+    var getMinusValue: Double? = minusMap[combineValue]?.toDouble()
+
+    
+    println("Conversion of $value $originalUnit = ${value!!.times(getMultiplicationValue?: 1.00).div(getDivValue?: 1.00).plus(getplusValue?:0.00).minus(getMinusValue?:0.00)} $conversionUnit ")
+
+//   when(combineValue) {
+//     "C-F" -> {
+//         println("Conversion of $value C = ${value?.times(9)?.div(5)?.plus(32)} F")
+//     } "F-C" -> {
+//         println("Conversion of $value F = ${value?.minus(32)?.times(5)?.div(9)} C")
+//     } "C-K" -> {
+//         println("Conversion of $value C = ${value?.plus(273.15)} K")
+//     } "F-K" -> {
+//         println("Conversion of $value F = ${value?.minus(32)?.times(5)?.div(9)?.plus(273.15)} K")
+//     }  else -> {
+//         println("Try using short forms like in/cm/km/mi/kg/F(Faranite)/C/K etc if you did then sorry your unit is not supported")
+//     }
+//   }
 
 }
