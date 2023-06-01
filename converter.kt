@@ -50,7 +50,10 @@ fun checkValidString(value: String?, orUnit:String?): Boolean {
 fun convertingToTheConvertUnit(originalUnit: String?, conversionUnit: String?, value:Double?) {
   val combineValue = "$originalUnit-$conversionUnit"
 
-//Creating a map for costomising the code 
+/*
+    Creating maps for different operations of 
+    the units based on the formula
+ */ 
   val multiplicationFormulaMap = mapOf(
     "km-mi" to 0.62,
     "mi-km" to 1.61,
@@ -63,14 +66,12 @@ fun convertingToTheConvertUnit(originalUnit: String?, conversionUnit: String?, v
     "L-cups" to 4.17,
     "cups-L" to 0.24,
     "C-F" to 9,
-    "F-C" to 5,
-    "F-K" to 5,
+    "F-C" to 0.56,
+    "F-K" to 0.56,
   )
 
     val divMap = mapOf(
-        "C-F" to 5,
-        "F-c" to 9,
-        "F-K" to 9
+        "C-F" to 5
     )
 
     val plusMap = mapOf(
@@ -89,21 +90,11 @@ fun convertingToTheConvertUnit(originalUnit: String?, conversionUnit: String?, v
     var getplusValue: Double? = plusMap[combineValue]?.toDouble()
     var getMinusValue: Double? = minusMap[combineValue]?.toDouble()
 
-    
-    println("Conversion of $value $originalUnit = ${value!!.times(getMultiplicationValue?: 1.00).div(getDivValue?: 1.00).plus(getplusValue?:0.00).minus(getMinusValue?:0.00)} $conversionUnit ")
-
-//   when(combineValue) {
-//     "C-F" -> {
-//         println("Conversion of $value C = ${value?.times(9)?.div(5)?.plus(32)} F")
-//     } "F-C" -> {
-//         println("Conversion of $value F = ${value?.minus(32)?.times(5)?.div(9)} C")
-//     } "C-K" -> {
-//         println("Conversion of $value C = ${value?.plus(273.15)} K")
-//     } "F-K" -> {
-//         println("Conversion of $value F = ${value?.minus(32)?.times(5)?.div(9)?.plus(273.15)} K")
-//     }  else -> {
-//         println("Try using short forms like in/cm/km/mi/kg/F(Faranite)/C/K etc if you did then sorry your unit is not supported")
-//     }
-//   }
+    //the following condition is to check whether the user has entered the values that we do convert for
+    if(listOf(getMultiplicationValue, getDivValue, getplusValue, getMinusValue).all { it == null }) {
+         println("Try using short forms like in/cm/km/mi/kg/F(Faranite)/C/K etc if you did then sorry your unit is not supported")
+    } else {   
+        println("Conversion of $value $originalUnit = ${value!!.minus(getMinusValue?:0.00).div(getDivValue?: 1.00).times(getMultiplicationValue?: 1.00).plus(getplusValue?:0.00)} $conversionUnit ")
+    }
 
 }
