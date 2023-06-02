@@ -1,6 +1,10 @@
+/*
+                    Converter Program - LAB 1
+ */
+
 fun main() {
     //Taking input from the user and storing it in readUnitValue
-    println("Please enter a positive integer")
+    println("Please enter a numeric value")
     var readUnitValue: Double? = readLine()?.toDoubleOrNull()
 
     //Checking the validity of the readUnitValue
