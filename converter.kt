@@ -32,7 +32,7 @@ fun main() {
 
 fun checkValidityInt(value: Double?): Boolean {
     if(value == null) {
-        println("Please enter a valid integer")
+        println("Please enter a valid numeric value")
         return false
     } else {
         return true
