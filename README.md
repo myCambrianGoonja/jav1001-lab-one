@@ -1,4 +1,6 @@
 # jav1001-lab-one
+    GOONJA GANDHI 
+    STUDENT ID: A002773082
 
     LAB1 Variables And Logic
 
